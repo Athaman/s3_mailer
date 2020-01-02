@@ -2,11 +2,16 @@
 
 module.exports.s3_notification = async event => {
   // extract s3 data from event object 
-  console.log("\n\n\n\n\n", event.Records);
-  console.log("\n\n\n\n\n", event.Records[0].s3);
 
+  const uploadData = event.Records.map(record => {
+    return {
+      bucketName: record.s3.bucket.name,
+      file: record.s3.object.key,
+      fileSize: record.s3.object.size
+    };
+  })[0];
   //  generate an email using the data 
-
+  console.log(uploadData);
   // send email
 
   //  send a response

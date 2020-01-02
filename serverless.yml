@@ -25,10 +25,12 @@ iamRoleStatements:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.se_notification
+  s3_notification:
+    handler: handler.s3_notification
     events:
       - s3:
-        bucket: athaman-s3-notification
-        event: s3.ObjectCreated:*
+          bucket: athaman-s3-notification
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .pdf
 
