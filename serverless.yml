@@ -1,0 +1,34 @@
+
+service: s3-mailer
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-southeast-2
+
+iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "s3:*"
+    Resource: "*"
+ 
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+  hello:
+    handler: handler.se_notification
+    events:
+      - s3:
+        bucket: athaman-s3-notification
+        event: s3.ObjectCreated:*
+
