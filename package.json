@@ -9,5 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "moment-timezone": "^0.5.27",
+    "node-mailer": "^0.1.1"
+  }
 }

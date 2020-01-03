@@ -18,13 +18,10 @@ iamRoleStatements:
  
 
 # you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+package:
+  include:
+    - mailer/**
+
 
 functions:
   s3_notification:

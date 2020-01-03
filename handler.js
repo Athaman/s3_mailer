@@ -1,5 +1,7 @@
 'use strict';
 
+const mailer = require('./mailer');
+
 module.exports.s3_notification = async event => {
   // extract s3 data from event object 
 
@@ -11,7 +13,12 @@ module.exports.s3_notification = async event => {
     };
   })[0];
   //  generate an email using the data 
-  console.log(uploadData);
+  
+  const content = await mailer.generateContent(uploadData);
+
+  console.log( content.subject, content.textBody, content.htmlBody);
+  
+
   // send email
 
   //  send a response
