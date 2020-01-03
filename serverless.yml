@@ -7,6 +7,8 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: ap-southeast-2
+  environment:
+    APP_PASS: ${file(./.env.yml):APP_PASS}
 
 iamRoleStatements:
   - Effect: "Allow"
@@ -31,6 +33,6 @@ functions:
       - s3:
           bucket: athaman-s3-notification
           event: s3:ObjectCreated:*
-          rules:
-            - suffix: .pdf
+          # rules:
+          #   - suffix: .pdf
 
