@@ -7,7 +7,9 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: ap-southeast-2
+  memorySize: 128
   environment:
+    # You need to set up a .env.yaml file of your own with your app password in it
     APP_PASS: ${file(./.env.yml):APP_PASS}
 
 iamRoleStatements:

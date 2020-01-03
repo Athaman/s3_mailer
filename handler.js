@@ -12,22 +12,14 @@ module.exports.s3_notification = async event => {
       fileSize: record.s3.object.size
     };
   })[0];
-  //  generate an email using the data 
   
   const content = await mailer.generateContent(uploadData);
-
-  console.log( content.subject, content.textBody, content.htmlBody);
-  
-
-  // send email
-
-  //  send a response
+  const response = await mailer.sendEmail(content);
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
+        response: response
       },
       null,
       2
